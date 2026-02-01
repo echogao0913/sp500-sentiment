@@ -360,10 +360,12 @@ def refresh_analysis():
 if __name__ == '__main__':
     import os
 
-    print("Starting initial analysis...")
-    run_analysis()
-
     port = int(os.environ.get('PORT', 5000))
     print(f"\nWeb Dashboard running on port {port}")
+
+    # Start analysis in background thread (don't block startup)
+    thread = threading.Thread(target=run_analysis)
+    thread.daemon = True
+    thread.start()
 
     app.run(host='0.0.0.0', port=port, debug=False, threaded=True)
