@@ -11,3 +11,9 @@ ENV/
 *.csv
 *.log
 .DS_Store
+.claude/
+AppData/
+.config/
+*.blb
+*.parc
+templates/

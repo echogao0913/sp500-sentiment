@@ -13,8 +13,17 @@ import threading
 import time
 from datetime import datetime
 import pandas as pd
+import os
 
-app = Flask(__name__)
+# Get the directory where this script is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
+# Create templates directory if it doesn't exist
+if not os.path.exists(TEMPLATE_DIR):
+    os.makedirs(TEMPLATE_DIR)
+
+app = Flask(__name__, template_folder=TEMPLATE_DIR)
 CORS(app)
 
 # Global variables
