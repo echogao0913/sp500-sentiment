@@ -184,7 +184,7 @@ HTML_TEMPLATE = """
 
         <div id="loadingMsg" class="loading">
             <div class="spinner"></div>
-            <p>Analyzing 30 major S&P 500 companies... Takes about 2-3 minutes.</p>
+            <p>Analyzing 20 major S&P 500 companies... Takes about 1-2 minutes.</p>
         </div>
 
         <div class="grid" id="dataGrid" style="display: none;">
@@ -294,10 +294,10 @@ def run_analysis():
         analyzer.fetch_sp500_list()
 
         with analysis_lock:
-            analysis_data['total_companies'] = min(len(analyzer.sp500_companies), 30)
+            analysis_data['total_companies'] = min(len(analyzer.sp500_companies), 20)
 
-        # Quick analysis: only 30 companies for faster results
-        analyzer.analyze_all_companies(sample_size=30)
+        # Quick analysis: only 20 companies for faster results
+        analyzer.analyze_all_companies(sample_size=20)
         top_rises, top_falls = analyzer.get_predictions()
 
         rises_list = []
