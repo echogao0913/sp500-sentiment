@@ -1,1 +1,1 @@
-web: gunicorn sp500_web_app:app --timeout 300 --workers 2
+web: gunicorn sp500_web_app_standalone:app --timeout 600 --workers 1 --preload
