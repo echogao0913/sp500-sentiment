@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 S&P 500 Sentiment Analysis - Fast Version with Mock Data
+
+⚠️ IMPORTANT: This version uses PRE-LOADED SIMULATED DATA for demonstration purposes.
+⚠️ The data below is MOCK DATA - not real sentiment analysis results.
+⚠️ Created for fast loading and sharing. For real analysis, use sp500_web_app_standalone.py
 """
 
 from flask import Flask, jsonify
@@ -11,8 +15,15 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# Pre-loaded sample data for instant results
+# =============================================================================
+# MOCK DATA - SIMULATED FOR DEMONSTRATION PURPOSES
+# This data represents hypothetical sentiment scores for 99 S&P 500 companies
+# The scores, sentiment values, and headlines are SIMULATED examples only
+# NOT REAL FINANCIAL DATA - FOR EDUCATIONAL PURPOSES ONLY
+# =============================================================================
+
 SAMPLE_DATA = {
+    # Top 10 predicted rises (out of 99 companies analyzed with mock data)
     'top_rises': [
         {'rank': 1, 'ticker': 'NVDA', 'company': 'NVIDIA Corporation', 'score': 42.5, 'sentiment': 0.425, 'headline': 'NVIDIA AI chip demand surges as tech giants expand data centers'},
         {'rank': 2, 'ticker': 'AMD', 'company': 'Advanced Micro Devices', 'score': 38.2, 'sentiment': 0.382, 'headline': 'AMD gains market share with new AI-focused processors'},
@@ -25,6 +36,7 @@ SAMPLE_DATA = {
         {'rank': 9, 'ticker': 'CRM', 'company': 'Salesforce Inc.', 'score': 20.4, 'sentiment': 0.204, 'headline': 'Salesforce AI tools drive customer adoption'},
         {'rank': 10, 'ticker': 'NOW', 'company': 'ServiceNow Inc.', 'score': 18.9, 'sentiment': 0.189, 'headline': 'ServiceNow automation platform sees strong demand'}
     ],
+    # Top 10 predicted falls (out of 99 companies analyzed with mock data)
     'top_falls': [
         {'rank': 1, 'ticker': 'BA', 'company': 'Boeing Company', 'score': -35.2, 'sentiment': -0.352, 'headline': 'Boeing faces new regulatory scrutiny over safety concerns'},
         {'rank': 2, 'ticker': 'CVS', 'company': 'CVS Health Corporation', 'score': -28.7, 'sentiment': -0.287, 'headline': 'CVS pharmacy closures accelerate amid competitive pressure'},
@@ -39,7 +51,7 @@ SAMPLE_DATA = {
     ],
     'last_update': '2026-02-01 20:45:00',
     'status': 'completed',
-    'total_companies': 20
+    'total_companies': 99  # MOCK DATA: Simulated analysis of 99 major S&P 500 companies
 }
 
 HTML_TEMPLATE = """<!DOCTYPE html>
@@ -141,7 +153,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="container">
         <header>
             <h1>📊 S&P 500 Sentiment Analysis</h1>
-            <p class="subtitle">Real-time stock sentiment predictions based on news analysis</p>
+            <p class="subtitle">Demo version with simulated data for 99 companies</p>
+            <p style="color: #ff9800; font-size: 0.9em; margin-top: 8px;">⚠️ Using mock data for demonstration - not real sentiment analysis</p>
         </header>
 
         <div class="controls">
@@ -162,7 +175,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
 
         <div class="disclaimer">
-            <strong>⚠️ DISCLAIMER:</strong> This analysis is for educational purposes only and is NOT financial advice.
+            <strong>⚠️ DISCLAIMER:</strong> This dashboard uses SIMULATED MOCK DATA for demonstration purposes only.
+            The sentiment scores and predictions shown are NOT based on real analysis and should NOT be used for actual investment decisions.
+            This is an educational demo only and is NOT financial advice.
         </div>
     </div>
 
